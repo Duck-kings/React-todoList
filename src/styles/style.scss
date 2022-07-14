@@ -1,0 +1,231 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
+
+::after, ::before, h1, h2, h3, h4, h5, h6, p, li, img, ul{
+    margin: 0;
+    padding: 0;
+}
+
+$base: 5px;
+$transition: .2s ease-in;
+$native: #333333;
+$border-color: #B4B4B4;
+
+#root{
+    background: lighten($native, 3%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: $base*6 0;
+
+    @media screen and (max-width: 575.98px) {
+        padding: $base*6 $base*3;
+    }
+}
+
+.container{
+    background: $native;
+    width: $base*110;
+    min-height: $base*115;
+    border-radius: $base*3;
+
+    &__form{
+        width: 100%;
+        min-height: $base*9;
+        display: flex;
+        justify-content: space-between;
+        padding: $base*3 $base*3;
+
+        @media screen and (max-width: 460px) {
+            flex-direction: column;
+            align-items: flex-end;
+        }
+    }
+
+    &__list{
+        list-style: none;
+        width: 100%;
+        padding: 0 0 $base*4 0;
+    }
+}
+
+.form__input{
+    font-size: 1.3rem;
+    border: none;
+    outline: none;
+    border-radius: $base*3;
+    padding: $base*2 $base*3;
+    width: 75%;
+
+    @media screen and (max-width: 575.98px) {
+        font-size: 1.1rem;
+        padding: $base*2 $base*2;
+        width: 70%;
+    }
+
+    @media screen and (max-width: 460px) {
+        font-size: .875rem;
+        width: 100%;
+        padding: $base $base*2;
+        margin-bottom: $base*2;
+    }
+}
+.form__btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    border-radius: $base*3;
+    background: lighten($native, 3%);
+    padding: 0 $base*2;
+    cursor: pointer;
+    transition: all $transition;
+    font-weight: 700;
+
+    &:hover{
+        background: #FAFAFA;
+        color: $native;
+    }
+
+    @media screen and (max-width: 575.98px) {
+        font-size: .875rem;
+        padding: 0 $base*3;
+        font-weight: 400;
+    }
+
+    @media screen and (max-width: 460px) {
+        max-width: $base*24;
+        padding: $base $base*3;
+    }
+}
+
+.list__item{
+    padding: $base $base*3;
+    width: 100%;
+    min-height: $base*9;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    transition: background $transition;
+    position: relative;
+    border-bottom: 1px solid $border-color;
+
+    &:hover{
+        background: #454545;
+    }
+
+    &__remove{
+        position: absolute;
+        right: $base*3;
+        top: 50%;
+        transform: translateY(-50%);
+        width: $base*4;
+        height: $base*4;
+        cursor: pointer;
+
+        svg{
+            width: 100%;
+            height: 100%;
+            transition: fill $transition;
+        }
+
+        &:hover svg{
+            fill: #d10000;
+        }
+
+        @media screen and (max-width: 575.98px) {
+            &{
+                width: $base*3;
+                height: $base*3;
+            }
+        }
+    }
+}
+
+.item__text{
+    margin-left: $base*3;
+    font-size: 1.1rem;
+    max-width: 85%;
+
+    &.completed{
+        text-decoration: line-through;
+    }
+
+    @media screen and (max-width: 575.98px) {
+        font-size: .95rem;
+    }
+
+    @media screen and (max-width: 460px) {
+        font-size: .875rem;
+    }
+}
+
+.custom__check{
+    width: $base*5;
+    height: $base*5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid $border-color;
+    border-radius: $base;
+    cursor: pointer;
+    
+    &__ico{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        padding: 3px;
+        transition: all .1s ease-in;
+
+        svg{
+            visibility: hidden;
+            transition: all .7ms ease-in;
+        }
+    }
+
+    @media screen and (max-width: 575.98px) {
+        &{
+            width: $base*4;
+            height: $base*4;
+            border: 2px solid $border-color;
+        }
+    }
+
+    @media screen and (max-width: 460px) {
+        &{
+            width: $base*3;
+            height: $base*3;
+        }
+    }
+}
+
+.check__input{
+    width: 0;
+    height: 0;
+    opacity: 0;
+
+    &:checked ~ span{
+        background: #29ABE2;
+        box-shadow: 0 0 2px $base #29ABE2;
+
+        svg{
+            visibility: visible;
+        }
+
+        @media screen and (max-width: 575.98px) {
+            &{
+                box-shadow: 0 0 1px 3px #29ABE2;
+            }
+        }
+    }
+}
+
