@@ -2,8 +2,6 @@
 
 ## You can visit site on the link: [ugliest-fight-firebase-react-todo.surge.sh](https://ugliest-fight-firebase-react-todo.surge.sh/)
 
-----
-
 ## Available Scripts
 
 In the project directory, you can run:
